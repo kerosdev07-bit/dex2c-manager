@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background">
+
+    <!-- Top App Bar -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/primary">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/select_apk"
+            android:textColor="@color/on_primary"
+            android:textSize="18sp"
+            android:layout_gravity="center"
+            android:fontFamily="sans-serif-medium" />
+    </FrameLayout>
+
+    <!-- Content Area -->
+    <LinearLayout
+        android:id="@+id/content_area"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="@dimen/spacing_16">
+
+        <!-- Idle State -->
+        <LinearLayout
+            android:id="@+id/idle_state"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:visibility="visible">
+
+            <ImageView
+                android:id="@+id/upload_icon"
+                android:layout_width="@dimen/icon_size_80"
+                android:layout_height="@dimen/icon_size_80"
+                android:src="@android:drawable/ic_menu_upload"
+                android:contentDescription="@string/select_apk"
+                android:tint="@color/primary" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/select_your_apk"
+                android:textSize="@dimen/text_size_20"
+                android:textStyle="bold"
+                android:layout_marginTop="@dimen/spacing_24"
+                android:gravity="center" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/choose_apk_description"
+                android:textSize="14sp"
+                android:layout_marginTop="@dimen/spacing_8"
+                android:gravity="center"
+                android:textColor="#666666" />
+
+            <Button
+                android:id="@+id/browse_apk_btn"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/button_height"
+                android:text="@string/browse_apk"
+                android:layout_marginTop="@dimen/spacing_32"
+                android:layout_marginStart="@dimen/spacing_16"
+                android:layout_marginEnd="@dimen/spacing_16"
+                android:backgroundTint="@color/primary" />
+        </LinearLayout>
+
+        <!-- Loading State -->
+        <LinearLayout
+            android:id="@+id/loading_state"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:visibility="gone">
+
+            <ProgressBar
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:indeterminate="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/analyzing_apk"
+                android:layout_marginTop="@dimen/spacing_16"
+                android:textColor="@color/on_background" />
+        </LinearLayout>
+
+        <!-- Success State -->
+        <ScrollView
+            android:id="@+id/success_state"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/spacing_16">
+
+                <!-- APK Info Card -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/spacing_24"
+                    android:elevation="4dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="@dimen/spacing_16">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/apk_info"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/primary" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="#EEEEEE"
+                            android:layout_marginVertical="@dimen/spacing_16" />
+
+                        <!-- App Name -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginBottom="@dimen/spacing_12">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/app_name_label"
+                                android:textStyle="bold"
+                                android:textColor="@color/on_surface" />
+
+                            <TextView
+                                android:id="@+id/app_name_value"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="end"
+                                android:textSize="12sp"
+                                android:textColor="#666666" />
+                        </LinearLayout>
+
+                        <!-- Package Name -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginBottom="@dimen/spacing_12">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/package_label"
+                                android:textStyle="bold"
+                                android:textColor="@color/on_surface" />
+
+                            <TextView
+                                android:id="@+id/package_value"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="end"
+                                android:textSize="12sp"
+                                android:textColor="#666666" />
+                        </LinearLayout>
+
+                        <!-- Version -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginBottom="@dimen/spacing_12">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/version_label"
+                                android:textStyle="bold"
+                                android:textColor="@color/on_surface" />
+
+                            <TextView
+                                android:id="@+id/version_value"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="end"
+                                android:textSize="12sp"
+                                android:textColor="#666666" />
+                        </LinearLayout>
+
+                        <!-- File Size -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/file_size_label"
+                                android:textStyle="bold"
+                                android:textColor="@color/on_surface" />
+
+                            <TextView
+                                android:id="@+id/file_size_value"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="end"
+                                android:textSize="12sp"
+                                android:textColor="#666666" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- Buttons -->
+                <Button
+                    android:id="@+id/continue_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/button_height"
+                    android:text="@string/continue_class_selection"
+                    android:layout_marginBottom="@dimen/spacing_8"
+                    android:backgroundTint="@color/primary" />
+
+                <Button
+                    android:id="@+id/select_another_btn"
+                    style="?attr/borderlessButtonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/button_height"
+                    android:text="@string/select_another_apk"
+                    android:textColor="@color/primary" />
+            </LinearLayout>
+        </ScrollView>
+
+        <!-- Error State -->
+        <LinearLayout
+            android:id="@+id/error_state"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="@dimen/icon_size_80"
+                android:layout_height="@dimen/icon_size_80"
+                android:src="@android:drawable/ic_dialog_alert"
+                android:contentDescription="@string/error_label"
+                android:tint="@color/error" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/error_label"
+                android:textSize="@dimen/text_size_20"
+                android:textStyle="bold"
+                android:textColor="@color/error"
+                android:layout_marginTop="@dimen/spacing_16" />
+
+            <TextView
+                android:id="@+id/error_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:layout_marginTop="@dimen/spacing_8"
+                android:textColor="#666666"
+                android:gravity="center" />
+
+            <Button
+                android:id="@+id/retry_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/try_again"
+                android:layout_marginTop="@dimen/spacing_24"
+                android:backgroundTint="@color/primary" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

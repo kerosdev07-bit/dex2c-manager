@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">BlackObfuscator Manager</string>
+    <string name="select_apk">Select APK</string>
+    <string name="browse_apk">Browse APK</string>
+    <string name="select_your_apk">Select your APK to obfuscate</string>
+    <string name="choose_apk_description">Choose the APK file you want to protect with control flow obfuscation</string>
+    <string name="apk_info">APK Info</string>
+    <string name="app_name_label">App Name:</string>
+    <string name="package_label">Package:</string>
+    <string name="version_label">Version:</string>
+    <string name="file_size_label">File Size:</string>
+    <string name="continue_class_selection">Continue to Class Selection</string>
+    <string name="select_another_apk">Select Another APK</string>
+    <string name="analyzing_apk">Analyzing APK...</string>
+    <string name="error_label">Error</string>
+    <string name="try_again">Try Again</string>
+</resources>
